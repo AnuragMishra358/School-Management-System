@@ -1,0 +1,26 @@
+{
+  "name": "school-management-system",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000M\u0000e\u0000g\u0000a\u0000P\u0000r\u0000o\u0000j\u0000e\u0000c\u0000t\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+  "start": "concurrently \"npm run server\" \"npm run client\"",
+  "server": "cd api && npm start",
+  "client": "cd frontend && npm start"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnuragMishra358/SchoolManagementSystem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AnuragMishra358/SchoolManagementSystem/issues"
+  },
+  "homepage": "https://github.com/AnuragMishra358/SchoolManagementSystem#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
