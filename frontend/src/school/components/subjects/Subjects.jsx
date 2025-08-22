@@ -190,9 +190,9 @@ export const Subjects = () => {
       </div>
 
       {/* Render All subjectes */}
-      <div className="px-4 sm:px-6 lg:px-8">
+      <div className="px-2 sm:px-6 lg:px-8">
         <div className="overflow-x-auto">
-          <div className="min-w-full bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
+          <div className="min-w-full overflow-x-auto bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
             <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
               <thead className="bg-gray-100 dark:bg-gray-700">
                 <tr>
