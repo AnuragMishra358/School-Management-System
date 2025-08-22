@@ -9,7 +9,7 @@ export const DraggableButton = () => {
   const nodeRef = useRef(null);
 
   return (
-    <Draggable nodeRef={nodeRef} bounds="body">
+    <Draggable nodeRef={nodeRef} bounds="body" cancel="button">
       <div
         ref={nodeRef}
         className="fixed top-3 right-3 cursor-move z-[9999] w-fit h-fit"
