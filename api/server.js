@@ -18,7 +18,12 @@ const app = express(); // Create Express app instance
 
 app.use(express.json()); // Parse incoming JSON requests
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
-const corsOption = { exposedHeaders: "Authorization" };
+const corsOption = {
+  origin: "https://school-management-system-frontend-blush.vercel.app", // your Vercel frontend URL
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  credentials: true,
+  exposedHeaders: ["Authorization"],
+};
 app.use(cors(corsOption)); // Enable CORS for all routes
 app.use(cookieParser()); // Parse cookies from incoming requests
 
@@ -35,9 +40,9 @@ app.use("/api/subject", subjectRouter);
 app.use("/api/student", studentRouter);
 app.use("/api/teacher", teacherRouter);
 app.use("/api/schedule", scheduleRouter);
-app.use("/api/attendance",attendanceRouter);
-app.use("/api/examination",examinationRouter);
-app.use("/api/notice",noticeRouter);
+app.use("/api/attendance", attendanceRouter);
+app.use("/api/examination", examinationRouter);
+app.use("/api/notice", noticeRouter);
 
 const PORT = process.env.PORT; // Get port from environment variables
 
