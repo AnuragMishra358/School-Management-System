@@ -1,0 +1,24 @@
+.rbc-event {
+  font-size: 12px; /* smaller text */
+  line-height: 1.2;
+  padding: 2px 4px;
+}
+
+.rbc-event-content {
+  white-space: normal; /* allow text to wrap if needed */
+}
+
+/* Dark mode calendar fixes */
+.dark .rbc-today {
+  background-color: #1f2937 !important; /* Tailwind gray-800 */
+  color: #f9fafb !important; /* Tailwind gray-50 */
+}
+
+.dark .rbc-off-range-bg {
+  background-color: #111827 !important; /* Tailwind gray-900 */
+}
+
+.dark .rbc-header {
+  background-color: #374151; /* Tailwind gray-700 */
+  color: #f9fafb;
+}
