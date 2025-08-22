@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { baseApi } from "../../../environment";
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
+import { baseApi } from "../../../environment";
 
 export const Teachers = () => {
   const [formData, setFormData] = useState({
@@ -123,7 +124,7 @@ export const Teachers = () => {
       }
     } else {
       try {
-        await axios.post("http://localhost:5000/api/teacher/register", fd, {
+        await axios.post(`${baseApi}/teacher/register`, fd, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

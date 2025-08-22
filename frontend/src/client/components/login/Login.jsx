@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { baseApi } from "../../../environment";
 
 export const Login = () => {
   const { login } = useContext(AuthContext);
@@ -29,11 +30,11 @@ export const Login = () => {
       let backendUrl;
 
       if (formData.role === "school") {
-        backendUrl = `http://localhost:5000/api/school/login`;
+        backendUrl = `${baseApi}/school/login`;
       } else if (formData.role === "teacher") {
-        backendUrl = `http://localhost:5000/api/teacher/login`;
+        backendUrl = `${baseApi}/teacher/login`;
       } else if (formData.role === "student") {
-        backendUrl = `http://localhost:5000/api/student/login`;
+        backendUrl = `${baseApi}/student/login`;
       }
       const res = await axios.post(backendUrl, formData);
 

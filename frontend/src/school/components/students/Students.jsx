@@ -153,7 +153,7 @@ export const Students = () => {
       }
     } else {
       try {
-        await axios.post("http://localhost:5000/api/student/register", fd, {
+        await axios.post(`${baseApi}/student/register`, fd, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

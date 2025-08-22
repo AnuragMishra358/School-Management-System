@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { baseApi } from "../../../../environment";
 
 export const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -17,7 +18,7 @@ export const Gallery = () => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/school/all").then((resp) => {
+    axios.get(`${baseApi}/school/all`).then((resp) => {
       setSchools(resp.data.schools);
     });
   }, []);

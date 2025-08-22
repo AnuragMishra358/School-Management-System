@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { baseApi } from "../../../environment";
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -46,7 +47,7 @@ export const Register = () => {
     fd.append("password", formData.password);
 
     try {
-      await axios.post("http://localhost:5000/api/school/register", fd, {
+      await axios.post(`${baseApi}/school/register`, fd, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
