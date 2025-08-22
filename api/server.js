@@ -44,3 +44,7 @@ const PORT = process.env.PORT; // Get port from environment variables
 app.listen(PORT, () => console.log("server is running at Port=>", PORT)); // Start server on specified port
 const connectWithDb = require("./config/database");
 connectWithDb();
+
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
