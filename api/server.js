@@ -19,7 +19,10 @@ const app = express(); // Create Express app instance
 app.use(express.json()); // Parse incoming JSON requests
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
 const corsOption = {
-  origin: "https://school-management-system-frontend-blush.vercel.app", // your Vercel frontend URL
+  origin: [
+    "http://localhost:3000", // local development
+    "https://school-management-system-frontend-blush.vercel.app" // deployed frontend
+  ],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   credentials: true,
   exposedHeaders: ["Authorization"],
