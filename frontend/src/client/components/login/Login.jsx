@@ -23,9 +23,10 @@ export const Login = () => {
     });
   };
 
+  const [loading,setLoading]=useState(false);
   async function submitHandler(e) {
     e.preventDefault();
-
+    setLoading(true);
     try {
       let backendUrl;
 
@@ -51,18 +52,18 @@ export const Login = () => {
       }
 
       toast.success("Login Successfully");
-
       setFormData({
         email: "",
         password: "",
       });
-
+      setLoading(false);
       navigate(`/${formData.role}`);
     } catch (e) {
       console.log(e);
       toast.error(
         e.response?.data?.message || e.message || "Something went wrong"
       );
+      setLoading(false);
     }
   }
 
@@ -123,9 +124,10 @@ export const Login = () => {
         {/* Submit */}
         <button
           type="submit"
-          className="mt-4 bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition dark:bg-blue-500 dark:hover:bg-blue-600"
+          disabled={loading}
+          className={`mt-4 ${loading?"bg-gray-700 hover:bg-gray-800 dark:bg-slate-500 dark:hover:bg-slate-600":"bg-blue-600 hover:bg-blue-700 dark:bg-slate-500 dark:hover:bg-slate-600"}  text-white font-semibold py-2 rounded-lg  transition `}
         >
-          Submit
+          {loading?"Logging in":"Submit"}
         </button>
       </form>
     </div>
