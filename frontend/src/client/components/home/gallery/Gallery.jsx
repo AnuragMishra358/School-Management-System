@@ -32,7 +32,7 @@ export const Gallery = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {!schools &&
-           <div className="min-h-[50vh] text-2xl font-bold text-gray-500 dark:text-gray-300">Fetching School Data...</div>
+           <div className="min-h-[50vh] bg-slate-50 dark:bg-slate-800 text-2xl font-bold text-gray-600 dark:text-gray-300">Fetching School Data...</div>
           }
           {/* Gallery Items */}
           {schools &&
