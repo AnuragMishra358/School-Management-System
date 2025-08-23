@@ -231,7 +231,7 @@ export const Students = () => {
         {/* Image Upload */}
         <div>
           <label className="block font-semibold mb-2 text-gray-700 dark:text-gray-300">
-            Student Image {!edit && <span className="text-red-500">*</span>}
+            Student Image less than 1MB{!edit && <span className="text-red-500">*</span>}
           </label>
           <input
             type="file"

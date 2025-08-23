@@ -102,7 +102,7 @@ export const Register = () => {
         {/* Image Upload */}
         <div>
           <label className="block font-medium mb-1">
-            School Image <span className="text-red-500">*</span>
+            School Image less than 1MB <span className="text-red-500">*</span>
           </label>
           <input
             type="file"
