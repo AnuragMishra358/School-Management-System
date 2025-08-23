@@ -31,8 +31,12 @@ export const Gallery = () => {
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {!schools &&
+           <div className="min-h-[50vh] text-2xl font-bold text-gray-500 dark:text-gray-300">Fetching School Data...</div>
+          }
           {/* Gallery Items */}
-          {schools.map((school, index) => (
+          {schools &&
+            schools.map((school, index) => (
             <div
               key={index}
               onClick={() =>
