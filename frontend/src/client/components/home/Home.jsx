@@ -4,7 +4,7 @@ import { Carousel } from './carousel/Carousel'
 
 export const Home = () => {
   return (
-    <div>
+    <div className='min-h-screen'>
       <Carousel/>
       <Gallery/>
     </div>
