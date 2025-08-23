@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { baseApi } from "../../../environment";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ export const Register = () => {
   const [imageUrl, setImageUrl] = useState("");
   const fileInputRef = useRef();
 
+  
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (files) {
@@ -26,9 +28,11 @@ export const Register = () => {
     }
   };
 
+  const navigate=useNavigate();
+  const [loading,setLoading]=useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     if (!formData.image) return toast.error("Please upload an image");
     if (!formData.school_name.trim() || formData.school_name.length < 6)
       return toast.error("School name too short");
@@ -54,7 +58,8 @@ export const Register = () => {
       });
 
       toast.success("School registered successfully!");
-
+      navigate("/login")
+      setLoading(false);
       setFormData({
         school_name: "",
         email: "",
@@ -75,6 +80,7 @@ export const Register = () => {
       } else {
         toast.error("Something went wrong while registering school.");
       }
+      setLoading(false);
     }
   };
 
@@ -199,7 +205,7 @@ export const Register = () => {
           type="submit"
           className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition"
         >
-          Submit
+          {loading?"Registering":"Submit"}
         </button>
       </form>
     </div>

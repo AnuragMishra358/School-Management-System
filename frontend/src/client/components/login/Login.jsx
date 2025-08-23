@@ -10,7 +10,7 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    role: "student",
+    role: "school",
     email: "",
     password: "",
   });
