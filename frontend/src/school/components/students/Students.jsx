@@ -444,32 +444,39 @@ export const Students = () => {
       </form>
 
       {/* Search and Filter */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-8 max-w-4xl mx-auto">
-        <input
-          type="text"
-          onChange={(e) => handleSearch(e)}
-          placeholder="Search by Name"
-          className="w-full sm:w-auto border border-gray-300 dark:border-gray-600 p-3 rounded-lg bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        />
-        <select
-          onChange={(e) => handleClass(e)}
-          className="w-full sm:w-auto border border-gray-300 dark:border-gray-600 p-3 rounded-lg bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        >
-          <option value="">Search by Class</option>
-          {classes.map((classItem) => (
-            <option
-              key={classItem._id}
-              value={`${classItem.class_text} [${classItem.class_num}]`}
-            >
-              {classItem.class_text} [{classItem.class_num}]
-            </option>
-          ))}
-        </select>
-      </div>
+      {students.length > 0 && (
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-8 max-w-4xl mx-auto">
+          <input
+            type="text"
+            onChange={(e) => handleSearch(e)}
+            placeholder="Search by Name"
+            className="w-full sm:w-auto border border-gray-300 dark:border-gray-600 p-3 rounded-lg bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <select
+            onChange={(e) => handleClass(e)}
+            className="w-full sm:w-auto border border-gray-300 dark:border-gray-600 p-3 rounded-lg bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          >
+            <option value="">Search by Class</option>
+            {classes.map((classItem) => (
+              <option
+                key={classItem._id}
+                value={`${classItem.class_text} [${classItem.class_num}]`}
+              >
+                {classItem.class_text} [{classItem.class_num}]
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
+      {students.length === 0 && (
+        <div className="text-xl mt-[20px] w-full text-center sm:text-3xl text-gray-200 min-h-[30vh]">
+          No student registered yet
+        </div>
+      )}
       {/* Students List */}
       <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {students &&
+        {students.length > 0 &&
           students.map((student) => (
             <div
               key={student._id}

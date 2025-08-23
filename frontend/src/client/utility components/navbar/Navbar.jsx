@@ -19,7 +19,7 @@ export const Navbar = () => {
         </div>
 
         {/* Right section: Nav Links */}
-        <div className="flex flex-wrap justify-center gap-4 text-white text-sm sm:text-base md:text-lg lg:text-xl">
+        <div className="flex flex-wrap justify-center mx-auto gap-4 text-white text-sm sm:text-base md:text-lg lg:text-xl">
           {!authenticated &&
             <NavLink to={"/"} className="bg-indigo-600 dark:bg-gray-700 px-3 py-1 rounded">Home</NavLink>
           }

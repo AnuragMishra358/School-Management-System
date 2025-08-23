@@ -12,15 +12,15 @@ export const DraggableButton = () => {
     <Draggable nodeRef={nodeRef} bounds="body" cancel="button">
       <div
         ref={nodeRef}
-        className="fixed top-3 right-3 cursor-move z-[9999] w-fit h-fit"
+        className="fixed top-0 right-0 cursor-move z-[9999] w-fit h-fit"
       >
         <button
           onClick={modeChange}
-          className={`p-3 rounded-full shadow-xl transition-all duration-300 
+          className={`p-1 sm:p-3 shadow-xl rounded-full transition-all duration-300 
           ${
             dark
               ? "bg-yellow-700 text-white hover:bg-yellow-800"
-              : "bg-gray-800 text-white hover:bg-gray-900"
+              : "bg-gray-600 text-white hover:bg-gray-700"
           }`}
         >
           {dark ? <MdLightMode size={24} /> : <MdDarkMode size={24} />}

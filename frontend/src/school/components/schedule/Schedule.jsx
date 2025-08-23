@@ -22,7 +22,7 @@ export const Schedule = () => {
       try {
         const { data } = await axios.get(`${baseApi}/class/all`);
         setClasses(data?.data || []);
-        setSelectedClass(data?.data[0]._id);
+        setSelectedClass(data?.data[0]?._id);
       } catch (error) {
         console.error(error);
       }
@@ -79,7 +79,8 @@ export const Schedule = () => {
             onChange={(e) => setSelectedClass(e.target.value)}
             required
             className="w-full border border-gray-300 dark:border-gray-600 p-2 sm:p-3 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
+          > 
+            <option value={""}>No class exist</option>
             {classes.map((classItem) => (
               <option key={classItem._id} value={classItem._id}>
                 {classItem.class_text} [{classItem.class_num}]

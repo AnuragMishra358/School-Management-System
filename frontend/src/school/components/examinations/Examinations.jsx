@@ -149,25 +149,27 @@ export const Examinations = () => {
       </div>
 
       {/* Select Class */}
-      <div className="max-w-2xl mx-auto mb-8">
-        <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
-          Change Class
-        </label>
-        <select
-          value={selectedClass}
-          onChange={(e) => {
-            setSelectedClass(e.target.value);
-          }}
-          className="w-full border border-gray-300 dark:border-gray-600 p-3 rounded-xl bg-white dark:bg-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-sky-400 shadow-sm transition"
-        >
-          <option value="">📘 Select Class</option>
-          {classes.map((classItem) => (
-            <option key={classItem._id} value={classItem._id}>
-              {classItem.class_text} [{classItem.class_num}]
-            </option>
-          ))}
-        </select>
-      </div>
+      {classes.length > 0 && (
+        <div className="max-w-2xl mx-auto mb-8">
+          <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
+            Change Class
+          </label>
+          <select
+            value={selectedClass}
+            onChange={(e) => {
+              setSelectedClass(e.target.value);
+            }}
+            className="w-full border border-gray-300 dark:border-gray-600 p-3 rounded-xl bg-white dark:bg-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-sky-400 shadow-sm transition"
+          >
+            <option value="">📘 Select Class</option>
+            {classes.map((classItem) => (
+              <option key={classItem._id} value={classItem._id}>
+                {classItem.class_text} [{classItem.class_num}]
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       {/* Exam Form */}
       {examForm && (
@@ -236,72 +238,79 @@ export const Examinations = () => {
       )}
 
       {/* Examination Table */}
-      <div className="max-w-5xl mx-auto mt-10 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md">
-        <h2 className="text-xl font-semibold text-indigo-700 dark:text-indigo-300 mb-4">
-          Examination List
-        </h2>
-        <div className="overflow-x-auto">
-          <table className="w-full border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-            <thead className="bg-gradient-to-r from-indigo-500 to-sky-400 text-white">
-              <tr>
-                <th className="p-3 text-left">Exam Date</th>
-                <th className="p-3 text-left">Subject</th>
-                <th className="p-3 text-left">Class</th>
-                <th className="p-3 text-left">Exam Type</th>
-                <th className="p-3 text-center">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {examinations &&
-                examinations.map((exam) => (
-                  <tr
-                    key={exam._id}
-                    className="border-b border-gray-200 dark:border-gray-700 hover:bg-indigo-50 dark:hover:bg-gray-700 transition"
-                  >
-                    <td className="p-3 text-gray-800 dark:text-gray-200">
-                      {new Date(exam.examDate).toLocaleDateString("en-IN", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </td>
-                    <td className="p-3 text-gray-800 dark:text-gray-200">
-                      {exam.subject.subject_name}
-                    </td>
-                    <td className="p-3 text-gray-800 dark:text-gray-200">
-                      {exam.class.class_text}
-                    </td>
-                    <td className="p-3 text-gray-800 dark:text-gray-200">
-                      {exam.examType}
-                    </td>
-                    <td className="p-3 flex gap-2 justify-center">
-                      <button
-                        onClick={() => handleEdit(exam._id)}
-                        className="px-4 py-1 bg-yellow-400 text-white rounded-md shadow hover:bg-yellow-500 transition"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => handleDelete(exam._id)}
-                        className="px-4 py-1 bg-red-500 text-white rounded-md shadow hover:bg-red-600 transition"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+      {examinations.length > 0 && (
+        <div className="max-w-5xl mx-auto mt-10 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md">
+          <h2 className="text-xl font-semibold text-indigo-700 dark:text-indigo-300 mb-4">
+            Examination List
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+              <thead className="bg-gradient-to-r from-indigo-500 to-sky-400 text-white">
+                <tr>
+                  <th className="p-3 text-left">Exam Date</th>
+                  <th className="p-3 text-left">Subject</th>
+                  <th className="p-3 text-left">Class</th>
+                  <th className="p-3 text-left">Exam Type</th>
+                  <th className="p-3 text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {examinations &&
+                  examinations.map((exam) => (
+                    <tr
+                      key={exam._id}
+                      className="border-b border-gray-200 dark:border-gray-700 hover:bg-indigo-50 dark:hover:bg-gray-700 transition"
+                    >
+                      <td className="p-3 text-gray-800 dark:text-gray-200">
+                        {new Date(exam.examDate).toLocaleDateString("en-IN", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </td>
+                      <td className="p-3 text-gray-800 dark:text-gray-200">
+                        {exam.subject.subject_name}
+                      </td>
+                      <td className="p-3 text-gray-800 dark:text-gray-200">
+                        {exam.class.class_text}
+                      </td>
+                      <td className="p-3 text-gray-800 dark:text-gray-200">
+                        {exam.examType}
+                      </td>
+                      <td className="p-3 flex gap-2 justify-center">
+                        <button
+                          onClick={() => handleEdit(exam._id)}
+                          className="px-4 py-1 bg-yellow-400 text-white rounded-md shadow hover:bg-yellow-500 transition"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(exam._id)}
+                          className="px-4 py-1 bg-red-500 text-white rounded-md shadow hover:bg-red-600 transition"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div className="flex justify-center mt-6">
-          <button
-            onClick={() => setExamForm(true)}
-            className="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-400 text-white rounded-lg shadow hover:from-green-600 hover:to-emerald-500 transition"
-          >
-            ➕ Add Exam
-          </button>
-        </div>
+      )}
+      <div className="flex justify-center mt-6">
+        <button
+          onClick={() => setExamForm(true)}
+          className="px-6 py-3 bg-gradient-to-r from-green-500 dark:from-slate-600 dark:to-slate-700 to-emerald-400 text-white rounded-lg shadow hover:from-green-600 hover:to-emerald-500 transition"
+        >
+          ➕ Add Exam
+        </button>
       </div>
+      {examinations.length===0 &&
+       <div className="text-xl mt-[20px] w-full text-center sm:text-3xl text-gray-200 min-h-[30vh]">
+          No exam created yet
+        </div>
+      }
     </div>
   );
 };

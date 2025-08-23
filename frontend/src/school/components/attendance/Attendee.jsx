@@ -81,7 +81,11 @@ export const Attendee = ({ classId }) => {
         className="w-full border border-gray-300 dark:border-gray-600 p-3 rounded-lg bg-gray-50 dark:bg-gray-800 
            focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm transition text-gray-800 dark:text-gray-200"
       >
+        {teachers.length>0 ?
         <option value="">-- Select a teacher --</option>
+        :
+        <option value="">No teacher exist</option>
+        }
         {teachers.map((Item) => (
           <option key={Item._id} value={Item._id}>
             {Item.name}

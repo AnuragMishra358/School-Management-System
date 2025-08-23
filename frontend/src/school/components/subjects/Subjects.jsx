@@ -189,63 +189,70 @@ export const Subjects = () => {
         </form>
       </div>
 
+      {allSubjects.length === 0 && (
+        <div className="text-2xl w-full text-center sm:text-5xl text-gray-200 min-h-[30vh]">
+          No subject created yet
+        </div>
+      )}
       {/* Render All subjectes */}
-      <div className="px-2 sm:px-6 lg:px-8">
-        <div className="overflow-x-auto">
-          <div className="min-w-full overflow-x-auto bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
-            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-              <thead className="bg-gray-100 dark:bg-gray-700">
-                <tr>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
-                    Subject Name
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
-                    Codename
-                  </th>
-                  <th className="px-6 py-3 text-center text-sm font-semibold text-gray-700 dark:text-gray-200">
-                    Edit
-                  </th>
-                  <th className="px-6 py-3 text-center text-sm font-semibold text-gray-700 dark:text-gray-200">
-                    Delete
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                {allSubjects &&
-                  allSubjects.map((item) => (
-                    <tr
-                      key={item._id}
-                      className="hover:bg-gray-50 dark:hover:bg-gray-700"
-                    >
-                      <td className="px-6 py-4 text-gray-800 dark:text-gray-100">
-                        {item.subject_name}
-                      </td>
-                      <td className="px-6 py-4 text-gray-800 dark:text-gray-100">
-                        {item.subject_codename}
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <button
-                          onClick={() => openEditForm(item)}
-                          className="bg-gray-100 dark:bg-gray-700 rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-600"
-                        >
-                          <MdEdit className="text-green-500 text-xl hover:text-green-600" />
-                        </button>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <button
-                          onClick={() => handleDeletesubject(item)}
-                          className="bg-gray-100 dark:bg-gray-700 rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-600"
-                        >
-                          <MdDelete className="text-red-500 text-xl hover:text-red-700" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+      {allSubjects.length > 0 && (
+        <div className="px-2 sm:px-6 lg:px-8">
+          <div className="overflow-x-auto">
+            <div className="min-w-full overflow-x-auto bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
+              <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <thead className="bg-gray-100 dark:bg-gray-700">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                      Subject Name
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                      Codename
+                    </th>
+                    <th className="px-6 py-3 text-center text-sm font-semibold text-gray-700 dark:text-gray-200">
+                      Edit
+                    </th>
+                    <th className="px-6 py-3 text-center text-sm font-semibold text-gray-700 dark:text-gray-200">
+                      Delete
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                  {allSubjects &&
+                    allSubjects.map((item) => (
+                      <tr
+                        key={item._id}
+                        className="hover:bg-gray-50 dark:hover:bg-gray-700"
+                      >
+                        <td className="px-6 py-4 text-gray-800 dark:text-gray-100">
+                          {item.subject_name}
+                        </td>
+                        <td className="px-6 py-4 text-gray-800 dark:text-gray-100">
+                          {item.subject_codename}
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          <button
+                            onClick={() => openEditForm(item)}
+                            className="bg-gray-100 dark:bg-gray-700 rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-600"
+                          >
+                            <MdEdit className="text-green-500 text-xl hover:text-green-600" />
+                          </button>
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          <button
+                            onClick={() => handleDeletesubject(item)}
+                            className="bg-gray-100 dark:bg-gray-700 rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-600"
+                          >
+                            <MdDelete className="text-red-500 text-xl hover:text-red-700" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

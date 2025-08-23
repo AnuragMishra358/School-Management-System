@@ -369,6 +369,7 @@ export const Teachers = () => {
       </form>
 
       {/* Search */}
+      {teachers.length>0 &&
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-8 max-w-4xl mx-auto">
         <input
           type="text"
@@ -377,7 +378,13 @@ export const Teachers = () => {
           className="w-full sm:w-auto border border-gray-300 dark:border-gray-700 p-3 rounded-full bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-400"
         />
       </div>
-
+      }
+      
+      {teachers.length===0 &&
+       <div className="text-xl mt-[20px] w-full text-center sm:text-3xl text-gray-200 min-h-[30vh]">
+          No teacher registered yet
+        </div>
+      }
       {/* Teachers List */}
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {teachers &&

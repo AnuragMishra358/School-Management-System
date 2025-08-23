@@ -29,33 +29,35 @@ export const Gallery = () => {
         <h1 className="text-4xl font-bold text-center text-gray-300 dark:text-gray-100 mb-4">
           Registered Schools
         </h1>
+        {schools.length === 0 && (
+          <div className="min-h-[50vh] text-center w-full text-3xl sm:text-5xl font-bold text-red-500">
+            Fetching School Data Please Wait....
+          </div>
+        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {!schools &&
-           <div className="min-h-[50vh] bg-slate-50 dark:bg-slate-800 text-2xl font-bold text-gray-600 dark:text-gray-300">Fetching School Data...</div>
-          }
           {/* Gallery Items */}
           {schools &&
             schools.map((school, index) => (
-            <div
-              key={index}
-              onClick={() =>
-                openModal(`${school.school_image}`, school.school_name)
-              }
-              className="bg-white dark:bg-gray-800 rounded overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-            >
-              <img
-                src={`${school.school_image}`}
-                alt={school.school_name}
-                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
-              />
-              <div className="p-4 text-center bg-slate-300 dark:bg-gray-700">
-                <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                  {school.school_name}
-                </h2>
+              <div
+                key={index}
+                onClick={() =>
+                  openModal(`${school.school_image}`, school.school_name)
+                }
+                className="bg-white dark:bg-gray-800 rounded overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+              >
+                <img
+                  src={`${school.school_image}`}
+                  alt={school.school_name}
+                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                />
+                <div className="p-4 text-center bg-slate-300 dark:bg-gray-700">
+                  <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                    {school.school_name}
+                  </h2>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
 

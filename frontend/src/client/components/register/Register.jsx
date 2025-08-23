@@ -93,7 +93,12 @@ export const Register = () => {
       <form
         onSubmit={handleSubmit}
         className="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-lg shadow-lg p-6 max-w-xl mx-auto space-y-4"
-      >
+      >  
+        <div>
+          <label className="block text-sm text-red-500 mb-1">
+            Only school owner <span className="text-red-500">*</span>
+          </label>
+        </div>
         {/* Image Upload */}
         <div>
           <label className="block font-medium mb-1">

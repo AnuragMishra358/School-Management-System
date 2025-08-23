@@ -147,7 +147,9 @@ export const Dashboard = () => {
           </form>
         </div>
       )}
-
+      {!school &&
+      <div className="text-3xl sm:text-5xl w-full min-h-screen text-center text-red-500">Loading...</div>
+      }
       {school && (
         <div
           style={{

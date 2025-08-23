@@ -77,6 +77,10 @@ export const Login = () => {
         onSubmit={(e) => submitHandler(e)}
         className="flex flex-col gap-2 mt-8 mb-10 px-4 py-6 w-[90vw] sm:w-[70vw] md:w-[50vw] lg:w-[30vw] bg-white bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-90 rounded-xl shadow-xl shadow-slate-800 m-auto"
       >
+        <label className="px-1 text-xs text-red-500 ">
+          Login with your registered email and password <i className="text-red-500">*</i>
+        </label>
+
         {/* Role */}
         <label className="text-gray-700 dark:text-gray-200 font-medium px-1 text-sm sm:text-base">
           Role <i className="text-red-500">*</i>
@@ -129,6 +133,15 @@ export const Login = () => {
         >
           {loading?"Logging in":"Submit"}
         </button>
+
+        <button
+          type="button"
+          disabled={loading}
+          onClick={()=>{navigate("/register")}}
+          className={`mt-2 text-blue-500 pt-2 rounded-lg  transition `}
+        >
+          not registered? register here
+        </button>        
       </form>
     </div>
   );

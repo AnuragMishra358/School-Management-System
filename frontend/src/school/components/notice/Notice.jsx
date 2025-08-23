@@ -187,6 +187,8 @@ export const Notice = () => {
       </div>
 
       {/* Audience Filter */}
+      {notices.length>0 &&
+      <div>
       <h2 className="text-2xl font-bold text-white mt-10">
         Notices For {selectedAudience}
       </h2>
@@ -222,7 +224,14 @@ export const Notice = () => {
           All Notices
         </button>
       </div>
-
+      </div>
+      }
+      
+      {notices.length===0 &&
+         <div className="text-xl mt-[20px] w-full text-center sm:text-3xl text-gray-200 min-h-[30vh]">
+          No notice created yet
+        </div>
+      }
       {/* Notices List */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full ">
         {notices &&

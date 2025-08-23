@@ -104,19 +104,24 @@ export const AttendanceStudentList = () => {
       <h2 className="text-4xl font-bold text-center text-white dark:text-gray-100 drop-shadow-lg tracking-wide">
         Students Attendance
       </h2>
-
+      
+      
       <div className="flex flex-col lg:flex-row gap-8 mt-10 max-w-7xl mx-auto">
         {/* Left Section (Search + Select + Attendee) */}
         <div className="flex flex-col items-center lg:items-start gap-6 bg-white/90 dark:bg-gray-800 p-6 rounded-2xl shadow-2xl w-full lg:w-1/3">
           {/* Search Input */}
-          <input
+          {students.length>0 &&
+           <input
             type="text"
             onChange={(e) => handleSearch(e)}
             placeholder="🔍 Search by Name"
             className="w-full border border-gray-300 dark:border-gray-600 p-3 rounded-xl bg-gray-50 dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-400 shadow-sm transition"
           />
+          }
+         
 
           {/* Class Select */}
+          {classes.length>0 &&
           <select
             onChange={(e) => handleClass(e)}
             className="w-full border border-gray-300 dark:border-gray-600 p-3 rounded-xl bg-gray-50 dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-400 shadow-sm transition"
@@ -132,6 +137,8 @@ export const AttendanceStudentList = () => {
               </option>
             ))}
           </select>
+          }
+          
 
           {/* Attendee Chart */}
           {selectedClass && (
@@ -142,6 +149,12 @@ export const AttendanceStudentList = () => {
         </div>
 
         {/* Right Section (Table) */}
+        {students.length===0 &&
+         <div className="text-xl mt-[20px] w-full text-center sm:text-3xl text-gray-200 min-h-[30vh]">
+          No student registered yet
+        </div>
+        }
+        {students.length>0 &&
         <div className="overflow-x-auto bg-white/95 dark:bg-gray-800 shadow-2xl rounded-2xl w-full lg:w-2/3">
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 rounded-xl overflow-hidden">
             <thead className="bg-gradient-to-r from-sky-600 to-teal-500 dark:from-gray-700 dark:to-gray-600">
@@ -212,6 +225,8 @@ export const AttendanceStudentList = () => {
             </tbody>
           </table>
         </div>
+        }
+        
       </div>
     </div>
   );

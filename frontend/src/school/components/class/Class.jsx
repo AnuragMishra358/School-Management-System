@@ -171,6 +171,11 @@ export const Class = () => {
         </form>
       </div>
 
+      {allClasses.length===0 &&
+        <div className="text-2xl w-full text-center sm:text-5xl text-gray-200 min-h-[30vh]">
+          No class created yet
+        </div>
+      }
       {/* Render All Classes */}
       <div className="flex flex-wrap max-w-[95vw] justify-center gap-6">
         {allClasses &&
