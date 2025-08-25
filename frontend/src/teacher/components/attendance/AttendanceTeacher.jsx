@@ -181,7 +181,7 @@ export const AttendanceTeacher = () => {
           {attendanceChecked ? (
             <p>✅ Attendance is already taken for this class</p>
           ) : (
-            <p>ℹ️ No student in this class</p>
+            <p>ℹ️ No student found</p>
           )}
         </div>
       )}
