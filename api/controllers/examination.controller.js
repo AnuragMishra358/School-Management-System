@@ -2,15 +2,19 @@ const Examination = require("../models/examination.model");
 
 module.exports = {
   newExamination: async (req, res) => {
+      
     try {
+     
       const schoolId = req.user.schoolId;
       const { date, subjectId, classId, examType } = req.body;
-      const exam=Examination.findOne({school:schoolId,class:classId,examDate:date});
+
+      const exam=await Examination.findOne({school:schoolId,class:classId,examDate:date});
+    
       if(exam){
-        res.status(500).json({success:false,message:"exam already exist on this date",data:exam});
+        res.status(500).json({success:false,message:"exam already exist on this date"});
         return ;
       }
-      // console.log("date",date);
+
       const newExamination = new Examination({
         examDate: date,
         examType: examType,
@@ -102,7 +106,7 @@ module.exports = {
       const schoolId = req.user.schoolId;
       const examinationId = req.params.id;
       const { date, subjectId, examType,classId } = req.body;
-      const exam=Examination.findOne({school:schoolId,class:classId,examDate:date});
+      const exam=await Examination.findOne({school:schoolId,class:classId,examDate:date});
       if(exam){
         res.status(500).json({success:false,message:"exam already exist on this date"});
         return ;
