@@ -209,7 +209,7 @@ export const Register = () => {
         <button
           type="submit"
           disabled={loading}
-          className={`w-full ${loading? "bg-gray-800 hover:bg-gray-900 dark:bg-slate-600 dark:hover:bg-slate-700":"bg-blue-600 hover:bg-blue-700 dark:bg-slate-600 dark:hover:bg-slate-700" } text-white font-semibold py-2 rounded-md transition`}
+          className={`w-full ${loading?"bg-blue-400 dark:bg-slate-400":"bg-blue-600 hover:bg-blue-700 dark:bg-slate-600 dark:hover:bg-slate-700"} text-white font-semibold py-2 rounded-md transition`}
         >
           {loading?"Registering":"Submit"}
         </button>

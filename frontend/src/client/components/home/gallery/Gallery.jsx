@@ -19,6 +19,7 @@ export const Gallery = () => {
 
   useEffect(() => {
     axios.get(`${baseApi}/school/all`).then((resp) => {
+      // console.log("printing school",resp.data.schools);
       setSchools(resp.data.schools);
     });
   }, []);

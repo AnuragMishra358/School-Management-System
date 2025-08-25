@@ -16,7 +16,7 @@ export const DraggableButton = () => {
       >
         <button
           onClick={modeChange}
-          className={`p-1 sm:p-3 shadow-xl rounded-full transition-all duration-300 
+          className={`p-2 sm:p-3 lg:p-5 shadow-xl rounded-full transition-all duration-300 
           ${
             dark
               ? "bg-yellow-700 text-white hover:bg-yellow-800"

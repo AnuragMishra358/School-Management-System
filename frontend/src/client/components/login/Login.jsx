@@ -129,7 +129,7 @@ export const Login = () => {
         <button
           type="submit"
           disabled={loading}
-          className={`mt-4 ${loading?"bg-gray-700 hover:bg-gray-800 dark:bg-slate-500 dark:hover:bg-slate-600":"bg-blue-600 hover:bg-blue-700 dark:bg-slate-500 dark:hover:bg-slate-600"}  text-white font-semibold py-2 rounded-lg  transition `}
+          className={`mt-4 ${loading?"bg-blue-400 dark:bg-slate-400":"bg-blue-600 hover:bg-blue-700 dark:bg-slate-600 dark:hover:bg-slate-700"}  text-white font-semibold py-2 rounded-lg  transition `}
         >
           {loading?"Logging in":"Submit"}
         </button>
