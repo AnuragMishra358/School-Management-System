@@ -110,14 +110,14 @@ export const AttendanceStudentList = () => {
         {/* Left Section (Search + Select + Attendee) */}
         <div className="flex flex-col items-center lg:items-start gap-6 bg-white/90 dark:bg-gray-800 p-6 rounded-2xl shadow-2xl w-full lg:w-1/3">
           {/* Search Input */}
-          {students.length>0 &&
+          
            <input
             type="text"
             onChange={(e) => handleSearch(e)}
             placeholder="🔍 Search by Name"
             className="w-full border border-gray-300 dark:border-gray-600 p-3 rounded-xl bg-gray-50 dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-400 shadow-sm transition"
           />
-          }
+          
          
 
           {/* Class Select */}
@@ -151,7 +151,7 @@ export const AttendanceStudentList = () => {
         {/* Right Section (Table) */}
         {students.length===0 &&
          <div className="text-xl mt-[20px] w-full text-center sm:text-3xl text-gray-200 min-h-[30vh]">
-          No student registered yet
+          No student found
         </div>
         }
         {students.length>0 &&

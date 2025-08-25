@@ -444,7 +444,7 @@ export const Students = () => {
       </form>
 
       {/* Search and Filter */}
-      {students.length > 0 && (
+      
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-8 max-w-4xl mx-auto">
           <input
             type="text"
@@ -467,11 +467,11 @@ export const Students = () => {
             ))}
           </select>
         </div>
-      )}
+     
 
       {students.length === 0 && (
         <div className="text-xl mt-[20px] w-full text-center sm:text-3xl text-gray-200 min-h-[30vh]">
-          No student registered yet
+          No student found
         </div>
       )}
       {/* Students List */}
