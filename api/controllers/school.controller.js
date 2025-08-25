@@ -162,7 +162,7 @@ module.exports = {
   getSchoolOwnData: async (req, res) => {
     try {
       // Extract school ID from route parameters
-      const id = req.user.id;
+      const id = req.user.schoolId;
 
       // Find school by ID
       const school = await School.findOne({ _id: id }).select(["-password"]);
@@ -193,7 +193,7 @@ module.exports = {
   updateSchool: async (req, res) => {
     try {
       // Extract school ID from route
-      const id = req.user.id;
+      const id = req.user.schoolId;
 
       // Find the school to be updated
       const school = await School.findOne({ _id: id });

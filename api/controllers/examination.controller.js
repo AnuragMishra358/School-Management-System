@@ -3,11 +3,11 @@ const Examination = require("../models/examination.model");
 module.exports = {
   newExamination: async (req, res) => {
     try {
-      const schoolId = req.user.id;
+      const schoolId = req.user.schoolId;
       const { date, subjectId, classId, examType } = req.body;
       const exam=Examination.findOne({school:schoolId,class:classId,examDate:date});
       if(exam){
-        res.status(500).json({success:false,message:"exam already exist on this date"});
+        res.status(500).json({success:false,message:"exam already exist on this date",data:exam});
         return ;
       }
       // console.log("date",date);
@@ -77,7 +77,7 @@ module.exports = {
 
   getExaminationWithId: async (req, res) => {
     try {
-      const schoolId = req.user.id;
+      const schoolId = req.user.schoolId;
       const id = req.params.id;
       const allExaminations = await Examination.findOne({
         school: schoolId,
@@ -99,7 +99,7 @@ module.exports = {
 
   updateExaminationWithId: async (req, res) => {
     try {
-      const schoolId = req.user.id;
+      const schoolId = req.user.schoolId;
       const examinationId = req.params.id;
       const { date, subjectId, examType,classId } = req.body;
       const exam=Examination.findOne({school:schoolId,class:classId,examDate:date});
@@ -130,7 +130,7 @@ module.exports = {
 
   deleteExaminationWithId: async (req, res) => {
     try {
-      const schoolId = req.user.id;
+      const schoolId = req.user.schoolId;
       const examinationId = req.params.id;
       await Examination.findOneAndDelete({
         _id: examinationId,
