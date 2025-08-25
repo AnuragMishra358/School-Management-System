@@ -32,7 +32,7 @@ export const Register = () => {
   const [loading,setLoading]=useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    
     if (!formData.image) return toast.error("Please upload an image");
     if (!formData.school_name.trim() || formData.school_name.length < 6)
       return toast.error("School name too short");
@@ -42,7 +42,7 @@ export const Register = () => {
     if (formData.password.length < 6) return toast.error("Password too short");
     if (formData.password !== formData.confirmPassword)
       return toast.error("Passwords do not match");
-
+    
     const fd = new FormData();
     fd.append("image", formData.image, formData.image.name);
     fd.append("school_name", formData.school_name);
@@ -51,6 +51,7 @@ export const Register = () => {
     fd.append("password", formData.password);
 
     try {
+      setLoading(true);
       await axios.post(`${baseApi}/school/register`, fd, {
         headers: {
           "Content-Type": "multipart/form-data",

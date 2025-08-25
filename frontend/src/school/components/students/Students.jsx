@@ -104,12 +104,13 @@ export const Students = () => {
     fetchClasses();
   }, []);
 
+  const [loading,setLoading]=useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     if (formData.password !== formData.confirmPassword)
       return toast.error("Passwords do not match");
-
+      
     // ✅ Create FormData
     const fd = new FormData();
     if (formData.image) {
@@ -127,6 +128,7 @@ export const Students = () => {
     fd.append("guardian_phone", formData.guardian_phone);
     if (edit) {
       try {
+        setLoading(true);
         await axios.patch(`${baseApi}/student/update/${editId}`, fd, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -135,7 +137,7 @@ export const Students = () => {
 
         // console.log("response",response);
         toast.success("student updated successfully!");
-
+        setLoading(false);
         handleCancel();
 
         fetchStudents();
@@ -150,9 +152,11 @@ export const Students = () => {
         } else {
           toast.error("Something went wrong while editing student.");
         }
+        setLoading(false);
       }
     } else {
       try {
+        setLoading(true);
         await axios.post(`${baseApi}/student/register`, fd, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -161,7 +165,7 @@ export const Students = () => {
 
         // console.log("response",response);
         toast.success("student registered successfully!");
-
+        setLoading(false);
         clearForm();
 
         fetchStudents();
@@ -176,6 +180,7 @@ export const Students = () => {
         } else {
           toast.error("Something went wrong while registering student.");
         }
+        setLoading(false);
       }
     }
   };
@@ -429,7 +434,7 @@ export const Students = () => {
             type="submit"
             className="px-8 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg shadow transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
-            Submit
+            {loading?"Please Wait...":"Submit"}
           </button>
           {edit && (
             <button

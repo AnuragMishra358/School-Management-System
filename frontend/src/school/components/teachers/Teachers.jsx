@@ -5,6 +5,7 @@ import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { baseApi } from "../../../environment";
 
+
 export const Teachers = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -76,6 +77,7 @@ export const Teachers = () => {
     fetchTeachers();
   }, [params]);
 
+  const [loading,setLoading]=useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -97,6 +99,7 @@ export const Teachers = () => {
     fd.append("gender", formData.gender);
     if (edit) {
       try {
+        setLoading(true);
         await axios.patch(`${baseApi}/teacher/update/${editId}`, fd, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -105,7 +108,7 @@ export const Teachers = () => {
 
         // console.log("response",response);
         toast.success("Teacher updated successfully!");
-
+        setLoading(false);
         handleCancel();
 
         fetchTeachers();
@@ -120,9 +123,11 @@ export const Teachers = () => {
         } else {
           toast.error("Something went wrong while editing Teacher.");
         }
+        setLoading(false);
       }
     } else {
       try {
+        setLoading(true);
         await axios.post(`${baseApi}/teacher/register`, fd, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -131,7 +136,7 @@ export const Teachers = () => {
 
         // console.log("response",response);
         toast.success("Teacher registered successfully!");
-
+        setLoading(false);
         clearForm();
 
         fetchTeachers();
@@ -146,6 +151,7 @@ export const Teachers = () => {
         } else {
           toast.error("Something went wrong while registering Teacher.");
         }
+        setLoading(false);
       }
     }
   };
@@ -353,7 +359,7 @@ export const Teachers = () => {
             type="submit"
             className="px-8 bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 rounded-full transition duration-300 shadow-lg"
           >
-            Submit
+           {loading?"Please Wait...":"Submit"} 
           </button>
 
           {edit && (
