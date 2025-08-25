@@ -187,7 +187,7 @@ export const Notice = () => {
       </div>
 
       {/* Audience Filter */}
-      {notices.length>0 &&
+      
       <div>
       <h2 className="text-2xl font-bold text-white mt-10">
         Notices For {selectedAudience}
@@ -225,11 +225,11 @@ export const Notice = () => {
         </button>
       </div>
       </div>
-      }
+      
       
       {notices.length===0 &&
          <div className="text-xl mt-[20px] w-full text-center sm:text-3xl text-gray-200 min-h-[30vh]">
-          No notice created yet
+          No notice found
         </div>
       }
       {/* Notices List */}
